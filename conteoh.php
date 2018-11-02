@@ -4,4 +4,6 @@
 <?php 
     echo "owo";
     echo "lalala";
+    
+    echo date("Y-m-d H:i:s");
 ?>
