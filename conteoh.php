@@ -1,11 +1,4 @@
-
-<?php 
-   
-
-
-?>
-
-<table border="1px">
+<table border="1px" style="text-align:center">
     <?php 
         $abd = array(
             0 => array("id"=>1,"title"=>"iPhone","price"=>3600),
