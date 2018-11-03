@@ -1,6 +1,6 @@
 <?php
 class Jasontool {
-    public function tableGenerator($table){
+    public function tableGenerator($a){
 
         $table = '<table border="1" width="100%">';
         $table .= '<tr><th>ID</th><th>Title</th><th>Price</th></tr>';
