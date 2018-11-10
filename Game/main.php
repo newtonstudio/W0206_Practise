@@ -1,9 +1,7 @@
 <?php
-require "Game.php";
-require "Animal.php";
-require "Rabbit.php";
-require "Tortoise.php";
-require "Tiger.php";
+function __autoload($classname) {
+    require $classname.".php";
+}
 
 $game = new Game();
 
