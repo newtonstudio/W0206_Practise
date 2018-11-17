@@ -23,7 +23,7 @@
             foreach($newsList as $v) {
           ?>
           <div class="post-preview">
-            <a href="<?=base_url('detail/'.$v['id'])?>">
+            <a href="<?=base_url('detail/'.$v['id'].'/'.slug($v['title']))?>">
               <h2 class="post-title">
                 <?=$v['title']?>
               </h2>

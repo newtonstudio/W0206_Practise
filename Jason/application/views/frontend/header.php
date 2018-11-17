@@ -21,6 +21,22 @@
     <!-- Custom styles for this template -->
     <link href="<?=base_url('assets/css/clean-blog.min.css')?>" rel="stylesheet">
 
+    <script src="<?=base_url('assets/vendor/jquery/jquery.min.js')?>"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA4XvxLGyOv6eENbqDKdUmTYyekpG8qZfE",
+        authDomain: "w0206-2.firebaseapp.com",
+        databaseURL: "https://w0206-2.firebaseio.com",
+        projectId: "w0206-2",
+        storageBucket: "w0206-2.appspot.com",
+        messagingSenderId: "902855485543"
+      };
+      firebase.initializeApp(config);
+    </script>
+
   </head>
 
   <body>
@@ -42,12 +58,72 @@
               <a class="nav-link" href="<?=base_url('about')?>">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="post.html">Sample Post</a>
+              <a class="nav-link" href="<?=base_url('report')?>">Report</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="<?=base_url('contact')?>">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:fbLogin();">Facebook Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:googleLogin();">Google Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+
+    <script>
+
+      function googleLogin(){
+
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+          console.log(result);
+          // ...
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+          console.log(error);
+        });
+
+      }
+
+      function fbLogin(){
+
+        var provider = new firebase.auth.FacebookAuthProvider();
+        firebase.auth().useDeviceLanguage();
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+
+          console.log(result);
+
+          // ...
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+          console.log(error);
+        });
+
+      }
+    </script>

@@ -52,7 +52,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['home'] = "frontend/index";
 $route['about'] = "frontend/about";
-$route['detail/(:num)'] = "frontend/news_detail/$1";
+$route['report'] = "frontend/report";
+$route['contact'] = "frontend/contact";
+$route['contact_submit'] = "frontend/contact_submit";
+$route['detail/(:num)/(:any)'] = "frontend/news_detail/$1/$2";
+$route['api/api_contact_submit'] = "api/api_contact_submit";
+$route['api/report_api'] = "api/report_api";
 
 $route['default_controller'] = 'frontend/index';
 $route['404_override'] = '';
