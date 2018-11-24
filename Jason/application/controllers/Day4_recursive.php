@@ -10,6 +10,40 @@ class Day4_recursive extends CI_Controller {
 					'children' => array(
 						array(
 							'title' => "LAPTOP",
+							'children' => array(
+								array(
+									'title'=>"13'",
+									'children' => array(
+										array(
+											'title' => "i8",
+											'children' => array(),
+										),
+										array(
+											'title' => "i7",
+											'children' => array(),
+										),
+										array(
+											'title' => "i6",
+											'children' => array(),
+										),
+									),
+								),
+								array(
+									'title'=>"14'",
+									'children' => array(),
+								),
+								array(
+									'title'=>"15'",
+									'children' => array(),
+								)
+							),
+						),
+						array(
+							'title' => "MOBILE",
+							'children' => array(),
+						),
+						array(
+							'title' => "TABLET",
 							'children' => array(),
 							)
 					)

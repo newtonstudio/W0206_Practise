@@ -11,8 +11,10 @@ class Day3_unittest extends CI_Controller {
 
         //1. Test get_where
         $contactList = $this->Contact_model->get_where();
-        $this->unit->run($contactList, 'is_array', 'contactList is array');
+        //$contactList = "estetes";
 
+        $this->unit->run($contactList, 'is_array', 'contactList is array');
+        
         //2. Test insert and getOne together
         $insert_array = array(
             'name'          => "Jason",
@@ -23,13 +25,15 @@ class Day3_unittest extends CI_Controller {
         );
 
         $id = $this->Contact_model->insert($insert_array);
-        //$insert_array['id'] = $id;
+        $insert_array['id'] = $id;
 
         $contactData = $this->Contact_model->getOne(array(
             'id' => $id,
         ));
+        
 
         $this->unit->run($contactData, $insert_array, 'insert data is equal to getOne data');
+        
 
         echo $this->unit->report();
 

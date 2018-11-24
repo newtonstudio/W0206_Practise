@@ -2,22 +2,31 @@
 class Frontend extends CI_Controller {
     public function index(){
 
+        $this->output->enable_profiler(TRUE);
+
+        $this->benchmark->mark("NewmodelLoadingTime_start");
         $this->load->model("News_model");
+        $this->benchmark->mark("NewmodelLoadingTime_end");
+
+        $this->benchmark->mark("SlugLoadingTime_start");
         $this->load->helper("slug");
+        $this->benchmark->mark("SlugLoadingTime_end");
 
         // SELECT * FROM news WHERE is_deleted = 0
-
+        $this->benchmark->mark("NewsLoadingTime_start");
         $newsList = $this->News_model->get_where(array(
             'is_deleted' => 0,
         ));
+        $this->benchmark->mark("NewsLoadingTime_end");
 
         $data = array();
         $data['newsList'] = $newsList;
 
-
+        $this->benchmark->mark("ViewLoadingTime_start");
         $this->load->view("frontend/header", $data);
         $this->load->view("frontend/index", $data);
         $this->load->view("frontend/footer", $data);
+        $this->benchmark->mark("ViewLoadingTime_end");
     }
 
     public function news_detail($id, $slug) {

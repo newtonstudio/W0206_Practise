@@ -9,6 +9,12 @@ class MY_Model extends CI_Model {
 
     public function fetch($limit, $start, $where=array()) {
 
+        //$start = ($page - 1) * $limit;
+
+        //page = 1, start = (1-1)*10 = 0
+        //page = 2, start = (2-1)*10 = 10
+        //page = 3, start = (3-1)*10 = 20
+
         $this->db->select("*");
         $this->db->limit($limit, $start);
         $this->db->where($where);
@@ -48,6 +54,13 @@ class MY_Model extends CI_Model {
 
         $this->db->insert($this->table_name, $insert_array);
         return $this->db->insert_id();
+
+    }
+
+    public function update($where=array(), $update_array=array()){
+
+        $this->db->where($where);
+        $this->db->update($this->table_name, $update_array);        
 
     }
 
