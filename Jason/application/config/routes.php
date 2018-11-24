@@ -58,6 +58,14 @@ $route['contact_submit'] = "frontend/contact_submit";
 $route['detail/(:num)/(:any)'] = "frontend/news_detail/$1/$2";
 $route['api/api_contact_submit'] = "api/api_contact_submit";
 $route['api/report_api'] = "api/report_api";
+$route['api/glogin'] = "day3_sociallogin/glogin_api";
+$route['api/flogin'] = "day3_sociallogin/flogin_api";
+$route['api/cronjob'] = "day4_cronjob/cronjob";
+
+$route['day3_unittest'] = "day3_unittest/runtest";
+$route['day4_recursive'] = "day4_recursive/showresult";
+$route['day4_timespace_generateData'] = "day4_timespace/generateData";
+$route['day4_timespace_productlist'] = "day4_timespace/productList";
 
 $route['default_controller'] = 'frontend/index';
 $route['404_override'] = '';

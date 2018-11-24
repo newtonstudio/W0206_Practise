@@ -23,19 +23,19 @@
 
     <script src="<?=base_url('assets/vendor/jquery/jquery.min.js')?>"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyA4XvxLGyOv6eENbqDKdUmTYyekpG8qZfE",
-        authDomain: "w0206-2.firebaseapp.com",
-        databaseURL: "https://w0206-2.firebaseio.com",
-        projectId: "w0206-2",
-        storageBucket: "w0206-2.appspot.com",
-        messagingSenderId: "902855485543"
-      };
-      firebase.initializeApp(config);
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA4XvxLGyOv6eENbqDKdUmTYyekpG8qZfE",
+    authDomain: "w0206-2.firebaseapp.com",
+    databaseURL: "https://w0206-2.firebaseio.com",
+    projectId: "w0206-2",
+    storageBucket: "w0206-2.appspot.com",
+    messagingSenderId: "902855485543"
+  };
+  firebase.initializeApp(config);
+</script>
 
   </head>
 
@@ -79,12 +79,25 @@
       function googleLogin(){
 
         var provider = new firebase.auth.GoogleAuthProvider();
+        
+        provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+        firebase.auth().useDeviceLanguage();
+
         firebase.auth().signInWithPopup(provider).then(function(result) {
           // This gives you a Google Access Token. You can use it to access the Google API.
           var token = result.credential.accessToken;
           // The signed-in user info.
           var user = result.user;
+
           console.log(result);
+          $.ajax({
+            "url":"http://localhost/w0206_Practise/Jason/api/glogin",
+            "data":{"token":result.credential.idToken},
+            "method":"POST"
+          }).done(function(res){
+            console.log(res);
+          })
+          
           // ...
         }).catch(function(error) {
           // Handle Errors here.
@@ -111,6 +124,14 @@
           var user = result.user;
 
           console.log(result);
+
+          $.ajax({
+            "url":"http://localhost/w0206_Practise/Jason/api/flogin",
+            "data":{"token":result.credential.accessToken},
+            "method":"POST"
+          }).done(function(res){
+            console.log(res);
+          })
 
           // ...
         }).catch(function(error) {

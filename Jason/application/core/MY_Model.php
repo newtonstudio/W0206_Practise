@@ -7,6 +7,19 @@ class MY_Model extends CI_Model {
         $this->load->database();
     }
 
+    public function fetch($limit, $start, $where=array()) {
+
+        $this->db->select("*");
+        $this->db->limit($limit, $start);
+        $this->db->where($where);
+        $query = $this->db->get($this->table_name);
+
+        //$query->row_array() //suits one data
+        //$query->result_array() //suits many data
+        return $query->result_array();
+
+    }
+
     public function get_where($where=array()) {
 
         //SELECT * FROM news [WHERE....]
