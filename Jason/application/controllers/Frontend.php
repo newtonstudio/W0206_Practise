@@ -50,43 +50,6 @@ class Frontend extends CI_Controller {
         $this->load->view("frontend/footer");
     }
 
-    public function contact(){
-
-
-
-
-        $this->load->view("frontend/header");
-        $this->load->view("frontend/contact_api");
-        $this->load->view("frontend/footer");
-    }
-
-    public function contact_submit(){
-        
-
-        $n = $this->input->post("name", true);
-        $e = $this->input->post("email", true);
-        $t = $this->input->post("tel", true);
-        $m = $this->input->post("msg", true);
-
-        $this->load->model("Contact_model");
-
-        $this->Contact_model->insert(array(
-            'name'          => $n,
-            'email'         => $e,
-            'tel'           => $t,
-            'msg'           => $m,
-            'created_date'  => date("Y-m-d H:i:s"),
-        ));
-
-        $this->load->library("emailer");
-
-        $this->emailer->sendmail("jason.tian@i-tea.com.tw", "Someone is calling you...", "You've got a mail!!!");
-        
-        //bring user to contact again
-        redirect(base_url('contact')."?Success=True");
-
-    }
-
     public function json_demo(){
 
         //JSON = Javascript Object Notation

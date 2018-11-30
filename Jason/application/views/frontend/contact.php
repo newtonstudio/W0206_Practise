@@ -40,6 +40,7 @@
           <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
           <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
           <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+          <script src='https://www.google.com/recaptcha/api.js'></script>
           <form name="sentMessage" id="contactForm" novalidate method="POST" action="<?=base_url('contact_submit')?>">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls">
@@ -70,6 +71,7 @@
               </div>
             </div>
             <br>
+            <div class="g-recaptcha" data-sitekey="<?=$site_key?>"></div>
             <div id="success"></div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
