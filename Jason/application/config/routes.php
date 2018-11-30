@@ -54,6 +54,16 @@ $route['home'] = "frontend/index";
 $route['about'] = "frontend/about";
 $route['report'] = "frontend/report";
 $route['contact'] = "frontend/contact";
+
+$route['subscribe'] = "day5_paymentgateway/subscribe";
+$route['submit_subscribe'] = "day5_paymentgateway/submit_subscribe";
+$route['checkout_payment/(:num)'] = "day5_paymentgateway/checkout_payment/$1";
+$route['checkout_callback'] = "day5_paymentgateway/checkout_callback";
+$route['checkout_completed/(:num)'] = "day5_paymentgateway/checkout_completed/$1";
+$route['checkout_retry/(:num)'] = "day5_paymentgateway/checkout_retry/$1";
+
+
+
 $route['contact_submit'] = "frontend/contact_submit";
 $route['detail/(:num)/(:any)'] = "frontend/news_detail/$1/$2";
 $route['api/api_contact_submit'] = "api/api_contact_submit";

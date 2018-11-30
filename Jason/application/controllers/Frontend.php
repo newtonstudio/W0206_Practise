@@ -2,7 +2,7 @@
 class Frontend extends CI_Controller {
     public function index(){
 
-        $this->output->enable_profiler(TRUE);
+        $this->output->enable_profiler(FALSE);
 
         $this->benchmark->mark("NewmodelLoadingTime_start");
         $this->load->model("News_model");

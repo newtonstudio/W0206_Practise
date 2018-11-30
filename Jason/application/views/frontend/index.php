@@ -42,7 +42,7 @@
           
           <!-- Pager -->
           <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            <a class="btn btn-primary" href="<?=base_url('subscribe')?>">Subscribe us!</a>
           </div>
         </div>
       </div>
