@@ -103,7 +103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           console.log(result);
           $.ajax({
-            "url":"http://localhost/w0206_Practise/Jason/api/glogin",
+            "url":"<?=base_url('api/glogin')?>",
             "data":{"token":result.credential.idToken},
             "method":"POST"
           }).done(function(res){
@@ -138,7 +138,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           console.log(result);
 
           $.ajax({
-            "url":"http://localhost/w0206_Practise/Jason/api/flogin",
+            "url":"<?=base_url('api/flogin')?>",
             "data":{"token":result.credential.accessToken},
             "method":"POST"
           }).done(function(res){
